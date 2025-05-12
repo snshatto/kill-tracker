@@ -1,3 +1,6 @@
+![Foundry Core Compatible Version](https://img.shields.io/endpoint?url=https%3A%2F%2Ffoundryshields.com%2Fversion%3Fstyle%3Dfor-the-badge%26url%3Dhttps%3A%2F%2Fgithub.com%2Fsnshatto%2Fkill-tracker%2Freleases%2Fdownload%2Fv1.0.1%2Fmodule.json)
+![Latest Version](https://img.shields.io/github/v/release/snshatto/kill-tracker?style=for-the-badge)
+![Downloads](https://img.shields.io/github/downloads/snshatto/kill-tracker/total?style=for-the-badge)
 # Desciprtion
 A simple module for Foundryvtt that allows manual tracking of player kills. This module is system agnostic.
 
