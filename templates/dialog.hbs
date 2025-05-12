@@ -1,0 +1,49 @@
+<div class="kt-image-container">
+  <img src="systems/dnd5e/ui/texture-gray1.webp" alt="Background" class="kt-bg-image" />
+</div>
+<div class="div-with-text">
+  <span><i class="fas fa-skull-crossbones"></i> &nbsp; Kill Tracker</span>
+</div>
+
+<!-- Drop Zone + Player Entries -->
+<div class="drop-zone drop-target" id="kill-tracker-drop-zone">
+  <span class="drop-zone-text"><i class="fa-solid fa-arrow-down-to-line"></i></span>
+
+  <div class="box scroll-container">
+    {{#if players.length}}
+      {{#each players}}
+        <div class="player-entry" data-actor-id="{{actorId}}">
+          <div class="cell">
+            <img class="player-token-img" src="{{img}}" data-actor-id="{{actorId}}" />
+          </div>
+          <div class="cell">
+            <span>{{name}}</span>
+          </div>
+          <div class="cell">
+            <input type="number" class="kill-count" data-actor-id="{{actorId}}" value="{{kills}}" />
+          </div>
+          <div class="cell">
+            <button class="delete-actor" data-actor-id="{{actorId}}" title="Remove from tracker">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      <div class="empty-message">
+        <i class="fa-solid fa-arrow-down-to-line"></i>
+        &nbsp; Drop or add actors here.
+      </div>
+    {{/if}}
+  </div>
+</div>
+
+<!-- This must come immediately after .drop-zone for the + selector to work -->
+<div class="character-select-container">
+  <select id="actor-select">
+    <option value="">-- Select an Actor to Add --</option>
+    {{#each allActors}}
+      <option value="{{id}}">{{name}}</option>
+    {{/each}}
+  </select>
+</div>

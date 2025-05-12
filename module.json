@@ -1,0 +1,29 @@
+{
+  "id": "kill-tracker",
+  "title": "Kill Tracker",
+  "description": "Track player kills in an editable dialog.",
+  "authors": [
+        {
+        "name": "Chateaux",
+        "discord": "Chateaux#0442",
+        "flags": {}
+        }
+    ],
+    "version": "3.0.0",
+        "compatibility": {
+            "minimum": "10",
+            "verified": "13"
+        },
+  "esmodules": ["main.js"],
+  "styles": ["styles/kill-tracker.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "url": "https://github.com/yourname/kill-tracker",
+  "manifest": "https://yourdomain.com/kill-tracker/module.json",
+  "download": "https://yourdomain.com/kill-tracker/kill-tracker.zip"
+}
