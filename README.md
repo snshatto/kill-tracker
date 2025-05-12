@@ -14,7 +14,7 @@ Clicking this button will open the Kill Tracker.
   - The kill tracker will persist across sessions, making this a great way to track player kills throughout a campaign
   - Additional actors can be added to the Kill Tracker, either through the select drop-down menu, or by dragging and dropping actors into the Kill Tracker
   - The "reload" button will update the tracker - this is helpful if several players are updating the tracker at once.
-  - The Kill Tracker displays the token image for each actor.
+  - By default, the Kill Tracker displays the token image for each actor. This can be changed in the settings menu.
   - The actor image can be selected to open the character sheet for that actor.
 
 <img src="https://github.com/user-attachments/assets/9ee460b2-cfae-48cd-9064-0c1c9712e547">
