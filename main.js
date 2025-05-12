@@ -19,6 +19,19 @@ Hooks.once("init", () => {
     type: Object,
     default: {}
   });
+
+  game.settings.register("kill-tracker", "imagePreference", {
+    name: "Actor Image Preference",
+    hint: "Choose whether to display the actor image or token image in the Kill Tracker dialog.",
+    scope: "client",
+    config: true,
+    type: String,
+    choices: {
+      actor: "Actor Image",
+      token: "Token Image"
+    },
+    default: "token"
+  });
 });
 
 Hooks.on("getSceneControlButtons", (controls) => {
@@ -65,10 +78,19 @@ class KillTracker extends HandlebarsApplicationMixin(ApplicationV2) {
   }
 
   static getActorImage(actor) {
+    const preference = game.settings.get("kill-tracker", "imagePreference");
+
     const tokenImg = actor.prototypeToken?.texture?.src || "";
     const actorImg = actor.img || "icons/svg/mystery-man.svg";
+
     const isWebm = tokenImg.toLowerCase().endsWith(".webm");
-    return isWebm ? actorImg : tokenImg || actorImg;
+
+    if (preference === "actor") {
+      return actorImg;
+    }
+
+    // Default to token image, unless it's a .webm or missing
+    return !isWebm && tokenImg ? tokenImg : actorImg;
   }
 
 static async openDialog() {
