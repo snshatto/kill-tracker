@@ -9,12 +9,6 @@
   gap: 1.5em;
 }
 
-.scrollable {
-  max-height: 300px; /* adjust if needed to fit under background image */
-  overflow-y: auto;
-  padding-right: 5px; /* optional: space for scroll bar */
-}
-
 .grid-center {
   display: grid;
   grid-template-columns: auto 0.7fr 0.4fr 0.4fr; /* Avatar | Name | Kill Count | Delete */
