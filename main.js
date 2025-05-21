@@ -195,7 +195,32 @@ static async openDialog() {
       KillTracker.attachDeleteActorHandler();
       KillTracker.preventEnterKeyDefault();
       KillTracker.enableDragDrop(html);
-    }, 0);
+
+      html.querySelectorAll('.increment-kill').forEach(button => {
+        button.addEventListener('click', async event => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          const actorId = event.currentTarget.dataset.actorId;
+          const input = html.querySelector(`.kill-count[data-actor-id="${actorId}"]`);
+          let current = parseInt(input.value) || 0;
+          const newValue = current + 1;
+          input.value = newValue;
+
+          // Save kills immediately to actor flag:
+          const actor = game.actors.get(actorId);
+          if (actor) {
+            try {
+              await actor.setFlag("kill-tracker", "kills", newValue);
+              // Optionally notify user
+              // ui.notifications.info(`Kills for ${actor.name} updated to ${newValue}.`);
+            } catch (err) {
+              console.error(`Error updating kills for ${actor.name}:`, err);
+            }
+          }
+        });
+      });
+  }, 0);
 }
 
   static attachCharacterSelectHandler() {
@@ -229,10 +254,9 @@ static async openDialog() {
         <div class="cell">
           <span>${actor.name}</span>
         </div>
-        <div class="cell">
+        <div class="cell kill-controls">
           <input class="kill-count" data-actor-id="${actor.id}" type="number" value="${actor.getFlag("kill-tracker", "kills") ?? 0}" />
-        </div>
-        <div class="cell">
+          <button class="increment-kill" data-actor-id="${actor.id}" title="Add 1 Kill"><i class="fa-solid fa-plus"></i></button>
           <button class="delete-actor" data-actor-id="${actor.id}"><i class="fa-solid fa-trash"></i></button>
         </div>
       </div>
@@ -255,6 +279,30 @@ static async openDialog() {
 
       KillTracker.attachKillTrackerClickHandlers();
       KillTracker.attachDeleteActorHandler();
+
+      // Attach increment button handler for the newly added actor's + button:
+      const newIncrementBtn = boxContainer.querySelector(`.increment-kill[data-actor-id="${actor.id}"]`);
+      if (newIncrementBtn) {
+        newIncrementBtn.addEventListener('click', async event => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          const actorId = event.currentTarget.dataset.actorId;
+          const input = dialogEl.querySelector(`.kill-count[data-actor-id="${actorId}"]`);
+          let current = parseInt(input.value) || 0;
+          const newValue = current + 1;
+          input.value = newValue;
+
+          const actor = game.actors.get(actorId);
+          if (actor) {
+            try {
+              await actor.setFlag("kill-tracker", "kills", newValue);
+            } catch (err) {
+              console.error(`Error updating kills for ${actor.name}:`, err);
+            }
+          }
+        });
+      }
     } else {
       console.error("Kill Tracker | Could not find .box container to insert actor");
     }
