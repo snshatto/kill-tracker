@@ -20,7 +20,7 @@ Clicking this button will open the Kill Tracker.
   - By default, the Kill Tracker displays the token image for each actor. This can be changed in the settings menu.
   - The actor image can be selected to open the character sheet for that actor.
 
-<img src="https://github.com/user-attachments/assets/9ee460b2-cfae-48cd-9064-0c1c9712e547">
+<img src="https://github.com/user-attachments/assets/0ef3facd-8e02-42a9-bb5d-cb5f1bcff533">
 
 ### Important Notes:
 - The module scope is set to "World", meaning that only the GM can add/remove actors from the kill tracker.
