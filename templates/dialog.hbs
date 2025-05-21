@@ -19,13 +19,10 @@
           <div class="cell">
             <span>{{name}}</span>
           </div>
-          <div class="cell">
+          <div class="cell kill-controls">
             <input type="number" class="kill-count" data-actor-id="{{actorId}}" value="{{kills}}" />
-          </div>
-          <div class="cell">
-            <button class="delete-actor" data-actor-id="{{actorId}}" title="Remove from tracker">
-              <i class="fa-solid fa-trash"></i>
-            </button>
+            <button class="increment-kill" data-actor-id="{{actorId}}" title="Add 1 Kill"><i class="fa-solid fa-plus"></i></button>
+            <button class="delete-actor" data-actor-id="{{actorId}}" title="Remove from tracker"><i class="fa-solid fa-trash"></i></button>
           </div>
         </div>
       {{/each}}
