@@ -11,9 +11,24 @@
 
 .grid-center {
   display: grid;
-  grid-template-columns: auto 0.7fr 0.4fr 0.4fr; /* Avatar | Name | Kill Count | Delete */
+  grid-template-columns: auto 0.7fr 0.3fr 0.3fr;
+  gap: 10px;
   align-items: center;
   text-align: center;
+}
+
+.cell input.kill-count {
+  width: 50px;
+  font-size: 1.1em;
+  padding: 6px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.cell button,
+.kill-controls button {
+  margin: 0;
+  vertical-align: middle;
 }
 
 .centered {
@@ -86,21 +101,35 @@
 /* Player Entry */
 .player-entry {
   display: grid;
-  grid-template-columns: auto 0.6fr 0.4fr 0.3fr;
-  gap: 10px;
+  grid-template-columns: auto 1fr auto;
+  gap: 25px;
   align-items: center;
   text-align: center;
+  margin-bottom: 12px;
 }
 
 .cell {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
+  gap: 4px;;
 }
 
 .player-entry .cell:last-child {
   padding: 0;
+  margin-bottom: 0;
+}
+
+.player-entry:last-child {
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.kill-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px; /* Equal spacing between input, +, and delete */
 }
 
 /* Token Image */
@@ -119,30 +148,15 @@
 }
 
 /* Delete Button */
-.delete-actor {
-  background: none;
+.delete-actor,
+.increment-kill {
   border: none;
-  color: white;
   cursor: pointer;
-  font-size: 0.9em;
-  padding: 3px;
-  margin: 0;
-  transition: background-color 0.1s ease;
-}
-
-.delete-actor:hover {
-  transform: scale(1.1); /* Subtle scaling */
-  background-color: #b94a48;
-  border-radius: 5px;
-  height: 30px;
   width: 30px;
-  border: 1px solid transparent;
-}
-
-#kill-tracker-dialog .delete-actor:focus {
-  outline: none;
-  box-shadow: none;
-  border: none;
+  height: 30px;
+  font-size: 0.9em;
+  padding: 0;
+  margin: 0;
 }
 
 /* Background image container */
